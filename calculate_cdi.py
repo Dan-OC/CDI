@@ -44,4 +44,4 @@ dat["month"]=[x[5:7] if x==x else pd.NA for x in dat.date ]
 dat["yearmonth"]=dat["year"]+"-"+ dat["month"]
 
 #Save for plotting 
-dat.to_csv("./output/dat_toplot.csv")
+dat.to_csv("./output/dat_toplot.csv",index=False)
