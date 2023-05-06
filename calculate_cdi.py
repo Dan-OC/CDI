@@ -14,7 +14,7 @@ dat=pd.read_csv(os.path.join("data","dat_sofar.csv"))
 articles=[x for x in dat[pd.isnull(dat.CDI)].index if (pd.notnull(dat.pmid.loc[x]) and pd.isnull(dat.date.loc[x]))]
 
 print("Starting search for ",str(len(articles))," articles")
-counter=0
+counter=1
 
 #Fill in the CDI (in loop for robustness)
 for i in articles:
