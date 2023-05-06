@@ -10,8 +10,8 @@ import time
 print("Reading data")
 dat=pd.read_csv(os.path.join("data","dat_sofar.csv"))
 
-#The articles we want have a null CDI and non-null PMID
-articles=[ x for x in dat[pd.isnull(dat.CDI)].index if pd.notnull(dat.pmid.loc[x])]
+#The articles we want have a null CDI and non-null PMID and dates
+articles=[x for x in dat[pd.isnull(dat.CDI)].index if (pd.notnull(dat.pmid.loc[x]) and pd.isnull(dat.date.loc[x]))]
 
 print("Starting search for ",str(len(articles))," articles")
 counter=0
@@ -29,7 +29,7 @@ for i in articles:
     #Save every 100 articles
     if counter%100==0:
         print("Counter:", str(counter),", saving...")
-        dat.to_csv("./data/dat_sofar.csv")
+        dat.to_csv("./data/dat_sofar.csv",index=False)
     counter+=1
 
 
